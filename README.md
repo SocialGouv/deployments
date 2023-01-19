@@ -1,3 +1,11 @@
+# Fork of `bobheadxi/deployments`
+
+replace `bobheadxi/deployments` by `socialgouv/deployments` to use it
+
+upgrade to node 18 and fix theses issues:
+- https://github.com/bobheadxi/deployments/issues/118
+- https://github.com/bobheadxi/deployments/issues/123
+
 # GitHub Deployments [![View Action](https://img.shields.io/badge/view-github%20action-yellow.svg)](https://bobheadxi.dev/r/deployments/) [![pipeline](https://github.com/bobheadxi/deployments/actions/workflows/pipeline.yaml/badge.svg)](https://github.com/bobheadxi/deployments/actions/workflows/pipeline.yaml)
 
 `bobheadxi/deployments` is a [GitHub Action](https://github.com/features/actions) for working painlessly with [GitHub deployment statuses](https://docs.github.com/en/rest/reference/deployments).
