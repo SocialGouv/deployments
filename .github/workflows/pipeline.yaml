@@ -160,7 +160,7 @@ jobs:
       uses: ./
       with:
         step: delete-env
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
         env: ${{ steps.deployment.outputs.env }}
         desc: Environment was deleted
         debug: true
