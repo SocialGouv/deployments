@@ -155,3 +155,12 @@ jobs:
         env: ${{ steps.deployment.outputs.env }}
         desc: Environment was pruned
         debug: true
+    
+    - name: delete environment
+      uses: ./
+      with:
+        step: delete-env
+        token: ${{ secrets.GITHUB_TOKEN }}
+        env: ${{ steps.deployment.outputs.env }}
+        desc: Environment was deleted
+        debug: true
