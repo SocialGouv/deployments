@@ -9736,21 +9736,20 @@ function deleteEnvironment(github, context) {
     return __awaiter(this, void 0, void 0, function* () {
         const { log, owner, repo, coreArgs: { environment }, } = context;
         const deployments = yield (0, deactivate_1.default)(github, context);
-        if (!deployments) {
-            return;
+        if (deployments) {
+            const existing = deployments.data.length;
+            for (let i = 0; i < existing; i++) {
+                const deployment = deployments.data[i];
+                log.info(`${environment}.${deployment.id}: deleting deployment (${deployment.sha})"`);
+                yield github.rest.repos.deleteDeployment({
+                    owner,
+                    repo,
+                    deployment_id: deployment.id,
+                });
+                log.debug(`${environment}.${deployment.id} deleted`);
+            }
+            log.info(`${environment}: ${existing} deployments deleted`);
         }
-        const existing = deployments.data.length;
-        for (let i = 0; i < existing; i++) {
-            const deployment = deployments.data[i];
-            log.info(`${environment}.${deployment.id}: deleting deployment (${deployment.sha})"`);
-            yield github.rest.repos.deleteDeployment({
-                owner,
-                repo,
-                deployment_id: deployment.id,
-            });
-            log.debug(`${environment}.${deployment.id} deleted`);
-        }
-        log.info(`${environment}: ${existing} deployments deleted`);
         yield github.rest.repos.deleteAnEnvironment({
             owner: context.owner,
             repo: context.repo,
