@@ -99,7 +99,7 @@ jobs:
             throw new Error("status_id not set");
           }
           const res = await github.rest.repos.getDeploymentStatus({
-            owner: "bobheadxi",
+            owner: "socialgouv",
             repo: "deployments",
             deployment_id: parseInt(deployment_id, 10),
             status_id: parseInt(status_id, 10),
@@ -137,7 +137,7 @@ jobs:
             throw new Error("status_id not set");
           }
           const res = await github.rest.repos.getDeploymentStatus({
-            owner: "bobheadxi",
+            owner: "socialgouv",
             repo: "deployments",
             deployment_id: parseInt(deployment_id, 10),
             status_id: parseInt(status_id, 10),
