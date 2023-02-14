@@ -16,6 +16,17 @@ async function deleteEnvironment(
     repo,
     coreArgs: { environment },
   } = context;
+
+  const existingEnvironment = await github.rest.repos.getEnvironment({
+    owner: context.owner,
+    repo: context.repo,
+    environment_name: environment,
+  });
+  if (!existingEnvironment) {
+    log.info(`environment ${environment} does not exists`);
+    return;
+  }
+
   const deployments = await deactivateEnvironment(github, context);
 
   if (deployments) {
